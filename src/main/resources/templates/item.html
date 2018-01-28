@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!--<p th:text="'Hello, ' + ${allItems} + '!'" />-->
+<div th:if="${allItems != null}">
+    <h1>Current Items</h1>
+    <table>
+        <tr>
+            <th>serial number</th>
+            <th>type</th>
+            <th>description</th>
+            <th>thumbnail</th>
+        </tr>
+        <tr th:each="item : ${allItems}">
+            <td th:text="${item.serialNumber}">Username</td>
+            <td th:text="${item.type}">Password</td>
+            <td th:text="${item.description}">Password</td>
+            <td th:text="${item.thumbnail}">Password</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
