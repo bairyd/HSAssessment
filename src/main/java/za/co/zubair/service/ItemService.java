@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public interface ItemService {
+    List<Item> getItem(String serialNumber, String description, TYPE type);
+
     Item getItemBySerialNumber(String serialNumber);
 
     List<Item> getItemsByDescription(String description);
