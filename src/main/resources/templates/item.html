@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--<p th:text="'Hello, ' + ${allItems} + '!'" />-->
-<div th:if="${allItems != null}">
+<div th:if="${retrievedItems != null}">
     <h1>Current Items</h1>
     <table>
         <tr>
@@ -15,11 +15,11 @@
             <th>description</th>
             <th>thumbnail</th>
         </tr>
-        <tr th:each="item : ${allItems}">
-            <td th:text="${item.serialNumber}">Username</td>
-            <td th:text="${item.type}">Password</td>
-            <td th:text="${item.description}">Password</td>
-            <td th:text="${item.thumbnail}">Password</td>
+        <tr th:each="item : ${retrievedItems}">
+            <td th:text="${item.serialNumber}"></td>
+            <td th:text="${item.type}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.thumbnail}"></td>
         </tr>
     </table>
 </div>
