@@ -14,8 +14,12 @@ import javax.inject.Inject;
 @Controller
 public class ItemController {
 
+    private ItemService itemService;
+
     @Inject
-    ItemService itemService;
+    public ItemController (ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @RequestMapping("/item")
     public String getAllItems(@RequestParam(value = "serialNumber", required = false) String serialNumber,

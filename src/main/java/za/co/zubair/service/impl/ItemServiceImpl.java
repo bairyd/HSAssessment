@@ -14,8 +14,12 @@ import java.util.List;
 @Named
 public class ItemServiceImpl implements ItemService {
 
-    @Inject
     private ItemRepository itemRepository;
+
+    @Inject
+    public ItemServiceImpl (ItemRepository itemRepository){
+        this.itemRepository = itemRepository;
+    }
 
     @Override
     public List<Item> getItem(String serialNumber, String description, Item.TYPE type) {

@@ -6,7 +6,7 @@
 <body>
 <form action="#" th:action="@{/api/item/add}" th:object="${item}" method="post">
     <p>Serial Number: <input type="text" th:field="*{serialNumber}"/></p>
-    <p>Type: <select>
+    <p>Type: <select th:field="*{type}">
                 <option th:each="type : ${T(za.co.zubair.model.Item.TYPE).values()}"
                         th:value="${type}"
                         th:text="${type}">

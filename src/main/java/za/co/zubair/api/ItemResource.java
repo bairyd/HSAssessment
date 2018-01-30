@@ -13,8 +13,12 @@ import javax.inject.Inject;
 @RequestMapping(value = "/api")
 public class ItemResource {
 
-    @Inject
     ItemService itemService;
+
+    @Inject
+    public ItemResource (ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @RequestMapping(value = "/item/add", method = RequestMethod.POST)
     public void addItem(@ModelAttribute Item item){
