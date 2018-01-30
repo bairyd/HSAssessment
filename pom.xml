@@ -66,8 +66,22 @@
             <version>1.4.196</version>
             <!--<scope>test</scope>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/knockout -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>knockout</artifactId>
+            <version>3.4.2</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <!--<filtering>true</filtering>-->
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

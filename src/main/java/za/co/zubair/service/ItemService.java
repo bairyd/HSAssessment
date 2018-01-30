@@ -2,6 +2,7 @@ package za.co.zubair.service;
 
 import za.co.zubair.model.Item;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 
@@ -21,4 +22,6 @@ public interface ItemService {
     void deleteItem(Item item);
 
     void updateItem(Item item);
+
+    byte[] convertImageToByteArray (BufferedImage image);
 }

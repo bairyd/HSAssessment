@@ -6,8 +6,12 @@ import za.co.zubair.model.Item;
 import za.co.zubair.respository.ItemRepository;
 import za.co.zubair.service.ItemService;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +74,17 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void updateItem(Item item) {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public byte[] convertImageToByteArray(BufferedImage image) {
+        try(ByteArrayOutputStream outputStream = new ByteArrayOutputStream()){
+            ImageIO.write(image,"jpg",outputStream);
+            return outputStream.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
