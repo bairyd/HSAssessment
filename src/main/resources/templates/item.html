@@ -3,16 +3,17 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="table.css"/>
 </head>
 <body>
     <div th:if="${retrievedItems != null}">
         <h1>Current Items</h1>
-        <table>
+        <table id="itemTable">
             <tr>
-                <th>serial number</th>
-                <th>type</th>
-                <th>description</th>
-                <th>thumbnail</th>
+                <th>Serial Number</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Thumbnail</th>
             </tr>
             <tr th:each="item : ${retrievedItems}">
                 <td th:text="${item.serialNumber}"></td>
