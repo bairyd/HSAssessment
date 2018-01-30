@@ -5,7 +5,9 @@ import java.sql.Blob;
 
 @Entity
 public class Item {
-
+    public enum TYPE {
+        CPU, GPU, MEMORY, MOTHERBOARD, VISUAL, AUDIO, STORAGE, PERIPHERAL
+    }
 
     @Id
     private String serialNumber;

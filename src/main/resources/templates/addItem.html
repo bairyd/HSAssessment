@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add an Item</title>
+</head>
+<body>
+<form action="#" th:action="@{/api/item/add}" th:object="${item}" method="post">
+    <p>Serial Number: <input type="text" th:field="*{serialNumber}"/></p>
+    <p>Type: <select>
+                <option th:each="type : ${T(za.co.zubair.model.Item.TYPE).values()}"
+                        th:value="${type}"
+                        th:text="${type}">
+                </option>
+            </select>
+    </p>
+    <p>Description: <input type="text" th:field="*{description}"/></p>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+</body>
+</html>

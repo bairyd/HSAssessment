@@ -3,7 +3,6 @@ package za.co.zubair.service.impl;
 import org.springframework.util.ObjectUtils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import za.co.zubair.model.Item;
-import za.co.zubair.model.TYPE;
 import za.co.zubair.respository.ItemRepository;
 import za.co.zubair.service.ItemService;
 
@@ -19,15 +18,17 @@ public class ItemServiceImpl implements ItemService {
     private ItemRepository itemRepository;
 
     @Override
-    public List<Item> getItem(String serialNumber, String description, TYPE type) {
+    public List<Item> getItem(String serialNumber, String description, Item.TYPE type) {
         List <Item> items = new ArrayList<>();
         if (!ObjectUtils.isEmpty(serialNumber)){
             Item item = getItemBySerialNumber(serialNumber);
             items.add(item);
         } else if (!ObjectUtils.isEmpty(description)) {
             items = getItemsByDescription(description);
-        } else if (!ObjectUtils.isEmpty(type.toString())) {
+        } else if (!ObjectUtils.isEmpty(type)) {
             items = getItemsByType(type);
+        } else {
+            items = getAllItems();
         }
         return items;
     }
@@ -43,7 +44,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getItemsByType(TYPE type) {
+    public List<Item> getItemsByType(Item.TYPE type) {
         return itemRepository.getItemsByType(type);
     }
 

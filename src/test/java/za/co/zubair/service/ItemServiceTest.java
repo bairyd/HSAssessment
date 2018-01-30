@@ -7,7 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import za.co.zubair.model.Item;
-import za.co.zubair.model.TYPE;
 import za.co.zubair.respository.ItemRepository;
 import za.co.zubair.service.impl.ItemServiceImpl;
 
@@ -42,7 +41,7 @@ public class ItemServiceTest {
         assertNull(returnedItem);
         returnedItem = itemService.getItemBySerialNumber(serialNumber);
         assertNotNull(returnedItem);
-        assertEquals(TYPE.CPU,returnedItem.getType());
+        assertEquals(Item.TYPE.CPU,returnedItem.getType());
     }
 
     @Test
@@ -57,16 +56,16 @@ public class ItemServiceTest {
 
     @Test
     public void verifyThatItemsAreRetrievedByType(){
-        TYPE cpu = TYPE.CPU;
+        Item.TYPE cpu = Item.TYPE.CPU;
         List<Item> remainingItems = createListOfDummyItems()
                                         .stream()
                                         .filter(item -> item.getType().compareTo(cpu) == 0)
                                         .collect(Collectors.toList());
-        when(mockItemRepository.getItemsByType(any(TYPE.class))).thenReturn(remainingItems);
+        when(mockItemRepository.getItemsByType(any(Item.TYPE.class))).thenReturn(remainingItems);
         List <Item> items = itemService.getItem(null, null, cpu);
         verify(mockItemRepository).getItemsByType(cpu);
         assertTrue(items.size() == 2);
-        assertTrue(items.stream().noneMatch(item -> item.getType().compareTo(TYPE.AUDIO) == 0));
+        assertTrue(items.stream().noneMatch(item -> item.getType().compareTo(Item.TYPE.AUDIO) == 0));
     }
 
     @Test
@@ -87,22 +86,22 @@ public class ItemServiceTest {
         item.setSerialNumber("12345");
         item.setDescription("dummy item");
         item.setThumbnail(null);
-        item.setType(TYPE.CPU);
+        item.setType(Item.TYPE.CPU);
         return item;
     }
 
     private List<Item> createListOfDummyItems(){
         List<Item> items = new ArrayList<>();
-        Item item1 = new Item("11111",TYPE.CPU,"item1",null);
+        Item item1 = new Item("11111",Item.TYPE.CPU,"item1",null);
         items.add(item1);
 
-        Item item2 = new Item("99999",TYPE.AUDIO,"item2",null);
+        Item item2 = new Item("99999",Item.TYPE.AUDIO,"item2",null);
         items.add(item2);
 
-        Item item3 = new Item("55555",TYPE.CPU,"thing3",null);
+        Item item3 = new Item("55555",Item.TYPE.CPU,"thing3",null);
         items.add(item3);
 
-        Item item4 = new Item("75342",TYPE.MEMORY,"item4",null);
+        Item item4 = new Item("75342",Item.TYPE.MEMORY,"item4",null);
         items.add(item4);
 
         return items;
