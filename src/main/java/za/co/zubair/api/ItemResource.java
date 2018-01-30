@@ -13,7 +13,7 @@ import javax.inject.Inject;
 @RequestMapping(value = "/api")
 public class ItemResource {
 
-    ItemService itemService;
+    private ItemService itemService;
 
     @Inject
     public ItemResource (ItemService itemService) {
