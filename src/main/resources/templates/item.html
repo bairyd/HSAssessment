@@ -5,23 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<!--<p th:text="'Hello, ' + ${allItems} + '!'" />-->
-<div th:if="${retrievedItems != null}">
-    <h1>Current Items</h1>
-    <table>
-        <tr>
-            <th>serial number</th>
-            <th>type</th>
-            <th>description</th>
-            <th>thumbnail</th>
-        </tr>
-        <tr th:each="item : ${retrievedItems}">
-            <td th:text="${item.serialNumber}"></td>
-            <td th:text="${item.type}"></td>
-            <td th:text="${item.description}"></td>
-            <td th:text="${item.thumbnail}"></td>
-        </tr>
-    </table>
-</div>
+    <div th:if="${retrievedItems != null}">
+        <h1>Current Items</h1>
+        <table>
+            <tr>
+                <th>serial number</th>
+                <th>type</th>
+                <th>description</th>
+                <th>thumbnail</th>
+            </tr>
+            <tr th:each="item : ${retrievedItems}">
+                <td th:text="${item.serialNumber}"></td>
+                <td th:text="${item.type}"></td>
+                <td th:text="${item.description}"></td>
+                <td ><img th:src="${'data:image/jpg;base64,'+item.thumbnail}"/></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class ItemServiceTest {
     private ItemRepository mockItemRepository;
 
     @Before
-    public void setup(){
+    public void setup() throws IOException {
         when(mockItemRepository.findOne(any())).thenReturn(createDummyItem());
     }
 
@@ -49,7 +49,7 @@ public class ItemServiceTest {
     }
 
     @Test
-    public void verifyThatItemIsRetrievedBySerialNumber(){
+    public void verifyThatItemIsRetrievedBySerialNumber() throws IOException {
         when(mockItemRepository.findOne(anyString())).thenReturn(createDummyItem());
         String serialNumber = "12345";
         List <Item> items = itemService.getItem(serialNumber, null, null);
@@ -92,7 +92,7 @@ public class ItemServiceTest {
         assertEquals(getExpectedByteArrayBase64String(),Base64.getEncoder().encodeToString(convertedImage));
     }
 
-    private Item createDummyItem(){
+    private Item createDummyItem() throws IOException {
         Item item = new Item();
         item.setSerialNumber("12345");
         item.setDescription("dummy item");
