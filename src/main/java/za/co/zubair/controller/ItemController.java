@@ -25,6 +25,7 @@ public class ItemController {
                               @RequestParam(value = "description", required = false) String description,
                               @RequestParam(value = "type", required = false) Item.TYPE type,
                               Model model){
+        model.addAttribute("item", new Item("",null,"",null));
         model.addAttribute("retrievedItems", itemService.getItem(serialNumber, description, type));
         return "item";
     }

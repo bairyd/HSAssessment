@@ -3,9 +3,25 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="table.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/item.css"/>
+    <script type='text/javascript' src='/scripts/jquery-3.3.1.min.js'></script>
 </head>
 <body>
+    <div>
+        <form name="itemAddForm" id="itemAddForm" enctype="multipart/form-data" action="#" th:action="@{/api/item/add}" th:object="${item}" method="post" target="itemFrame">
+            <p>Serial Number: <input type="text" th:field="*{serialNumber}"/></p>
+            <p>Type: <select th:field="*{type}">
+                <option th:each="type : ${T(za.co.zubair.model.Item.TYPE).values()}"
+                        th:value="${type}"
+                        th:text="${type}">
+                </option>
+            </select>
+            </p>
+            <p>Description: <input type="text" th:field="*{description}"/></p>
+            <p>Thumbnail: <input type="file" name="thumbnail"/></p>
+            <p><input type="submit" value="Submit"/></p>
+        </form>
+    </div>
     <div th:if="${retrievedItems != null}">
         <h1>Current Items</h1>
         <table id="itemTable">
@@ -23,5 +39,8 @@
             </tr>
         </table>
     </div>
+    <iframe id="itemFrame" name="itemFrame"></iframe>
+    <script type='text/javascript' src='/scripts/item.js'></script>
+    <script type='text/javascript' src='/scripts/knockout-3.4.2.js'></script>
 </body>
 </html>
