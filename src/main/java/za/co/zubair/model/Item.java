@@ -56,7 +56,9 @@ public class Item {
     }
 
     public void setThumbnail(MultipartFile file) throws IOException {
-        this.thumbnail = file.getBytes();
+        if (file != null) {
+            this.thumbnail = file.getBytes();
+        }
     }
 
     public Item() {
